@@ -22,10 +22,10 @@ screen.addEventListener('touchmove', (e) => {
   if (deltaY > 0 && deltaX < 10) {
     if  (posY < startY) {
       console.log('up')
-      lightness += deltaY * 0.4
+      lightness += deltaY * 0.2
     } else {
       console.log('down')
-      lightness -= deltaY * 0.4
+      lightness -= deltaY * 0.2
     }
   }
 
