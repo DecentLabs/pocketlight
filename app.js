@@ -46,19 +46,25 @@ screen.addEventListener('touchmove', (e) => {
 })
 
 async function initWakeLock () {
+  let status = ''
   if ('getWakeLock' in navigator) {
     let wakeLockObj
 
     try {
       // Create a wake lock for the type we want.
       wakeLockObj = await navigator.getWakeLock('screen')
-      console.log('👍', 'getWakeLock', wakeLockObj)
+      console.log('getWakeLock success', wakeLockObj)
+      status = 'wakelock OK'
     } catch (err) {
-      console.error('👎', 'getWakeLock', err)
+      console.error('getWakeLock error', err)
+      status = 'wakelock error'
     }
   } else {
     console.log('getWakeLock not supported')
+    status = 'wakelock not supported'
   }
+
+  screen.innerHTML = status
 }
 
 initWakeLock()
